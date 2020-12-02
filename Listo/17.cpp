@@ -36,38 +36,50 @@ int SumaDivNum(int n){
 return s;
 }
 
-//Sacar factores
-int factorizar(int n){
-	int factor=2;
-
-	while(factor<=n){
-
-
-
-	}
-
-
+//CALCULAR EL MAYOR DE DOS NUMEROS
+int mayor(int a, int b){
+	if(a>=b){
+		return a;
+	}else{
+			return b;	
+		}
 }
 
-//cuando c=m
-int MCM(int a, int b){
-	int mcm;
-
-
-
-
-return mcm;
+//CALCULAR EL MENOS DE DOS NUMEROS
+int menor(int a, int b){
+	if(a<=b){
+		return a;
+	}else{
+			return b;	
+		}
 }
 
-
-//cuando c==d
+//cuando c=d, CALCULAR EL MAXIMO COMUN DIVISOR
 int MCD(int a, int b){
-	int mcd;
+	int mcd=0;
+	int num1, num2;
+	num1=mayor(a, b);
+	num2=menor(a, b);
 
-
-
+	do{
+		mcd=num2;
+		num2=num1%num2;
+		num1=mcd;
+	}while(num2!=0);
 
 return mcd;
+}
+
+//cuando c=m, CALCULAR EL MINIMO COMUN MULTIPLO
+int MCM(int a, int b){
+	int mcm=0;
+	int num1, num2;
+	num1=mayor(a, b);
+	num2=menor(a, b);
+
+	mcm=(num1/MCD(num1,num2))*num2;
+
+return mcm;
 }
 
 
@@ -94,10 +106,10 @@ int main(){
 		
 		}
 	}else if (c=='m'){
-			h=5;
+			h=MCM(a, b);
 			cout<<h;
 		}else if(c=='d'){
-				h=6;
+				h=MCD(a,b);
 				cout<<h;
 			}else if((c=='+') or (c=='-') or (c=='*') or (c=='/')){
 					h=calcular(a, b, c);
